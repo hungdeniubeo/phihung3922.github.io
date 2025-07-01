@@ -13,7 +13,9 @@
 <body>
   <header>
     <nav class="container">
-      <div class="logo"><a href="#" style="font-size:1.5rem; color:#fff; font-weight:700;">MyPortfolio</a></div>
+      <div class="logo">
+        <a href="#" id="logo-reload" class="logo-link">MyPortfolio</a>
+      </div>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
@@ -32,19 +34,23 @@
   <main class="container">
     <section class="hero">
       <div class="intro reveal">
-        <h1>Hi, I'm Phi Hung</h1>
-        <p>Hello! I'm Nguyễn Hà Phi Hùng, a final‑year Software Engineering student at Saigon University with a passion for Web Development.</p>
-        <div class="hero-cta">
+        <h1 class="hero-animate h1">Hi, I'm Phi Hung</h1>
+        <p class="hero-animate p">Hello! I'm Nguyễn Hà Phi Hùng, a final‑year Software Engineering student at Saigon University with a passion for Web Development.</p>
+        <div class="hero-cta hero-animate cta">
           <a href="#projects" class="cta-button primary">View My Work</a>
           <a href="#contact" class="cta-button secondary">Get In Touch</a>
         </div>
       </div>
-      <img src="assests/images/avatar.jpg" alt="Profile photo" class="reveal">
+      <img src="assests/images/avatar.jpg" alt="Profile photo" class="reveal hero-animate avatar">
     </section>
+    <div class="marquee">
+      <span>Front-end Developer • UI/UX Enthusiast • React • Vue • Node.js • Always Learning • </span>
+      <span>Front-end Developer • UI/UX Enthusiast • React • Vue • Node.js • Always Learning • </span>
+    </div>
 
     <section id="about">
       <h2>About Me</h2>
-      <div class="about-card about-card-hover" style="background: #f8f9fa; border-radius: 18px; box-shadow: 0 4px 24px rgba(44,62,80,0.07); max-width:850px; margin:0 auto 2rem auto; padding:2.5rem 2rem 2rem 2rem;">
+      <div class="about-card about-card-hover about-animate" style="background: #f8f9fa; border-radius: 18px; box-shadow: 0 4px 24px rgba(44,62,80,0.07); max-width:850px; margin:0 auto 2rem auto; padding:2.5rem 2rem 2rem 2rem;">
         <div class="about-intro" style="text-align:left; margin-bottom:2rem;">
           <p style="font-size:1.15rem; margin-bottom:0.5rem;">Welcome to my personal corner!</p>
           <p style="font-size:1.15rem;">I'm Phi Hùng, a Front‑end Developer where logical thinking meets creativity to craft intuitive, user‑friendly interfaces.</p>

@@ -217,26 +217,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Add typing effect to hero title
-  const heroTitle = document.querySelector('.hero h1');
-  if (heroTitle) {
-    const originalText = heroTitle.textContent;
-    heroTitle.textContent = '';
-    heroTitle.style.opacity = '1';
-    
-    let i = 0;
-    const typeWriter = () => {
-      if (i < originalText.length) {
-        heroTitle.textContent += originalText.charAt(i);
-        i++;
-        setTimeout(typeWriter, 100);
-      }
-    };
-    
-    // Start typing effect after a short delay
-    setTimeout(typeWriter, 500);
-  }
-
   // Add parallax effect to background
   window.addEventListener('scroll', function() {
     const scrolled = window.pageYOffset;
@@ -343,4 +323,71 @@ document.addEventListener('DOMContentLoaded', function() {
       this.style.transform = 'translateY(0) scale(1)';
     });
   });
+
+  // Reload page when clicking logo
+  const logoReload = document.getElementById('logo-reload');
+  if (logoReload) {
+    logoReload.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.href = '/';
+    });
+  }
+
+  // Hero staggered animation (typing effect for h1)
+  setTimeout(() => {
+    const h1 = document.querySelector('.hero-animate.h1');
+    if (h1) {
+      const text = h1.textContent;
+      h1.textContent = '';
+      h1.classList.add('typing');
+      let i = 0;
+      const cursor = document.createElement('span');
+      cursor.className = 'typing-cursor';
+      cursor.textContent = '|';
+      h1.appendChild(cursor);
+      function typeChar() {
+        if (i < text.length) {
+          const span = document.createElement('span');
+          span.className = 'typing-char';
+          span.textContent = text.charAt(i);
+          h1.insertBefore(span, cursor);
+          setTimeout(() => {
+            span.classList.add('visible');
+          }, 10);
+          i++;
+          setTimeout(typeChar, 28); // chỉnh số này để điều chỉnh tốc độ xuất hiện từng chữ
+        } else {
+          cursor.remove();
+        }
+      }
+      setTimeout(typeChar, 200);
+    }
+  }, 100);
+  setTimeout(() => {
+    const p = document.querySelector('.hero-animate.p');
+    if (p) p.classList.add('show');
+  }, 300);
+  setTimeout(() => {
+    const cta = document.querySelector('.hero-animate.cta');
+    if (cta) cta.classList.add('show');
+  }, 500);
+  setTimeout(() => {
+    const avatar = document.querySelector('.hero-animate.avatar');
+    if (avatar) avatar.classList.add('show');
+  }, 700);
+
+  // About Me reveal on scroll (Intersection Observer, animate mỗi lần vào viewport)
+  const aboutSection = document.querySelector('.about-animate');
+  if (aboutSection) {
+    const aboutObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          aboutSection.classList.add('show');
+        } else {
+          aboutSection.classList.remove('show');
+        }
+      });
+    }, { threshold: 0.3 });
+    aboutObserver.observe(aboutSection);
+  }
 });
