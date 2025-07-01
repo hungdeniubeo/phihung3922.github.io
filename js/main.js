@@ -78,6 +78,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 500);
           }
         }
+
+        // Animate timeline items
+        if (entry.target.classList.contains('journey-timeline')) {
+          const timelineItems = entry.target.querySelectorAll('.timeline-item');
+          timelineItems.forEach((item, index) => {
+            setTimeout(() => {
+              item.classList.add('show');
+            }, index * 200);
+          });
+        }
       }
     });
   }, observerOptions);
@@ -107,6 +117,18 @@ document.addEventListener('DOMContentLoaded', function() {
   // Enhanced contact form submission
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
+    // Auto-resize for textarea
+    const messageTextarea = contactForm.querySelector('textarea[name="message"]');
+    if (messageTextarea) {
+      messageTextarea.addEventListener('input', function() {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight + 2) + 'px';
+      });
+      // Optional: reset height on page load
+      messageTextarea.style.height = 'auto';
+      messageTextarea.style.height = (messageTextarea.scrollHeight + 2) + 'px';
+    }
+
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
       
@@ -299,4 +321,26 @@ document.addEventListener('DOMContentLoaded', function() {
   }, { threshold: 0.5 });
 
   stats.forEach(stat => statsObserver.observe(stat));
+
+  // Timeline hover effects
+  document.querySelectorAll('.timeline-item').forEach(item => {
+    item.addEventListener('mouseenter', function() {
+      this.querySelector('.timeline-marker').style.transform = 'translateX(-50%) scale(1.1)';
+    });
+    
+    item.addEventListener('mouseleave', function() {
+      this.querySelector('.timeline-marker').style.transform = 'translateX(-50%) scale(1)';
+    });
+  });
+
+  // Achievement tags hover effect
+  document.querySelectorAll('.achievement-tag').forEach(tag => {
+    tag.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-2px) scale(1.05)';
+    });
+    
+    tag.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0) scale(1)';
+    });
+  });
 });
