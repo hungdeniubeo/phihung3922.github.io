@@ -390,4 +390,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { threshold: 0.3 });
     aboutObserver.observe(aboutSection);
   }
+
+  // Back to top button
+  const backToTopBtn = document.querySelector('.back-to-top');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 200) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  });
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 });
