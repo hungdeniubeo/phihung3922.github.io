@@ -325,13 +325,15 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Reload page when clicking logo
-  const logoReload = document.getElementById('logo-reload');
-  if (logoReload) {
-    logoReload.addEventListener('click', function(e) {
-      e.preventDefault();
-      window.location.href = '/';
-    });
-  }
+const logoReload = document.getElementById('logo-reload');
+if (logoReload) {
+  logoReload.addEventListener('click', function(e) {
+    e.preventDefault();
+    // Redirect to the root of the GitHub Pages site
+    window.location.href = '/phihung3922.github.io/';
+  });
+}
+
 
   // Hero staggered animation (typing effect for h1)
   setTimeout(() => {
